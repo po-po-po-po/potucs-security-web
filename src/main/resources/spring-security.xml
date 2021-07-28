@@ -5,9 +5,36 @@
             http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
             http://www.springframework.org/schema/security
             http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+
+    <!--
+    <security:http>标签
+    代表使用 HttpBasic 方式进行登录认证
+    1需要拦截什么资源
+    2什么资源什么角色权限
+    3定义认证方式：HttpBasic，FormLogin（*）
+    4定义登录页面，定义登录请求地址，定义错误处理方式
+    -->
     <security:http>
+        <!--
+  pattern: 需要拦截资源
+  access: 拦截方式
+          isFullyAuthenticated(): 该资源需要认证才可以访问
+          isAnonymous():只有匿名用户才可以访问（如果登录用户就无法访问）
+          permitAll():允许所有人（匿名和登录用户）方法
+     -->
+        <security:intercept-url pattern="/**" access="isFullyAuthenticated()"/>
         <security:http-basic/>
     </security:http>
+    <!--
+security:authentication-manager： 认证管理器
+    1）认证信息提供方式（账户名，密码，当前用户权限）
+-->
     <security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="eric" password="123456" authorities="ROLE_USER"/>
+                <security:user name="jack" password="123456" authorities="ROLE_ADMIN"/>
+            </security:user-service>
+        </security:authentication-provider>
     </security:authentication-manager>
 </beans>
