@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
     <!-- 扫描Controller类-->
-    <contenxt:component-scan base-package="com.potucs"/>
+    <contenxt:component-scan base-package="com.potucs.controller"/>
     <!--注解方式处理器映射器和处理器适配器 -->
     <mvc:annotation-driven></mvc:annotation-driven>
     <!--视图解析器-->
