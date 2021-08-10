@@ -48,6 +48,7 @@ public class UserMapperTest {
         //哈希算法+加盐
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassword(passwordEncoder.encode("123456"));
+        System.out.println(passwordEncoder.encode("123456"));
         userMapper.updatePassword(user);
     }
 }

@@ -41,6 +41,7 @@ public class MyUserDetailHandler implements UserDetailsService {
             List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
             for (Permission perm : permList) {
                 GrantedAuthority authority = new SimpleGrantedAuthority(perm.getPermTag());
+                System.out.println(perm.getId()+"----"+perm.getPermName()+"-----"+perm.getPermTag());
                 authorities.add(authority);
             }
             //把所有权限赋值给user
